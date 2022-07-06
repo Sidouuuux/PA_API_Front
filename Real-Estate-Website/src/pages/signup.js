@@ -5,8 +5,9 @@ import { Link, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-
 const Signupp = ({ setAuth }) => {
+let userAddress = "aaa"
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -36,6 +37,7 @@ const Signupp = ({ setAuth }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+    let wallet = await connect_wallet()
     try {
       const body = {
         name,
@@ -47,6 +49,7 @@ const Signupp = ({ setAuth }) => {
         contrat_type,
         id_agency,
         password,
+        wallet
       };
       console.log(body);
       const response = await fetch(
@@ -84,9 +87,12 @@ const Signupp = ({ setAuth }) => {
       console.log("Requesting permissions...");
       const permissions = await wallet.client.requestPermissions();
       console.log("Got permissions:", permissions.address);
-      addressUser = <p>{permissions.address}</p>;
+      userAddress = permissions.address;
+      console.log("here", userAddress)
+      return userAddress
     } catch (error) {
       console.log("Got error:", error);
+      return ""
     }
   }
   return (
@@ -194,8 +200,7 @@ const Signupp = ({ setAuth }) => {
                   <Form.Label>Confirm Password</Form.Label>
                   <Form.Input type="text" />
                 </Form.FormGroup>
-                <h5>LAAA{addressUser}</h5>
-                <button onClick={connect_wallet}>Connect Wallet</button>
+                <h5>LAAA{userAddress}</h5>
                 <Form.FormGroup>
                   <Form.SubmitInput type="submit" value="Signup" />
                 </Form.FormGroup>
@@ -217,14 +222,7 @@ const Signupp = ({ setAuth }) => {
         </Signup.Container>
       </Signup>
       <FooterContainer />
-      <div>
-        <main>
-          <h1>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </h1>
-          <button onClick={connect_wallet}>Connect Wallet</button>
-        </main>
-      </div>
+      
     </Fragment>
   );
 };
