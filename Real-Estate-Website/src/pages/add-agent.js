@@ -2,9 +2,9 @@ import React from "react";
 import {Section, Add, Form} from "../components";
 import {useParams} from "react-router-dom";
 import {HeaderContainer, DashboardContainer, FooterContainer} from "../containers";
-import {Description, Media} from "../partials/add_property_partials";
+import {Description, Media} from "../partials/add_property_agent";
 
-const AddListing = () => {
+const AddAgent = () => {
     const {id} = useParams();
     return (
         <>
@@ -36,4 +36,4 @@ const AddListing = () => {
     );
 };
 
-export default AddListing;
+export default AddAgent;

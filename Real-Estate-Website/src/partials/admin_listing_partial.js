@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Table, AdminListing, Form } from "../components";
 
 const PropertyHead = () => {
@@ -49,9 +48,7 @@ const AdminListingHeader = ({ selectId, handleDeleteAction }) => {
         <Form.Input type="text" placeholder="Search" />
       </Form>
       <AdminListing.Action>
-        <AdminListing.Button
-          onClick={() => handleDeleteAction(selectId)}
-          bg="var(--bs-danger)">
+        <AdminListing.Button onClick={() => handleDeleteAction(selectId)} bg="var(--bs-danger)">
           Delete
         </AdminListing.Button>
         <AdminListing.Button bg="var(--bs-blue)">

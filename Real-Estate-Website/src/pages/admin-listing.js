@@ -10,7 +10,7 @@ import { Section } from "../components";
 const AdminListingList = () => {
   return (
     <>
-      <HeaderContainer bg={false} />
+      <HeaderContainer bg="false" />
       <Section bgColor="--bs-fade-info">
         <Section.InnerContainer>
           <DashboardContainer title="All Listing">

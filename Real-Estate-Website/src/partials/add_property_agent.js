@@ -13,7 +13,7 @@ const Description = ({setAuth}) => {
         max_refunds: ""
     });
 
-    const {name, address, type, id_agence, id_status, value, max_refunds} = inputs;
+    const {name, surname, mail, address, age, salary, contrat_type, id_agency} = inputs;
 
     const onChange = e => setInputs({...inputs, [e.target.name]: e.target.value});
 
@@ -44,35 +44,39 @@ const Description = ({setAuth}) => {
     return (
         <Form onSubmit={onSubmitForm}>
             <Form.FormGroup>
-                <Form.Label>Name</Form.Label>
+                <Form.Label>name</Form.Label>
                 <Form.Input type="text" name="name" value={name} placeholder="name" onChange={e => onChange(e)}/>
+            </Form.FormGroup>
+            <Form.FormGroup>
+                <Form.Label>surname</Form.Label>
+                <Form.Input type="text" name="surname" value={surname} placeholder="surname" onChange={e => onChange(e)}/>
+            </Form.FormGroup>
+            <Form.FormGroup>
+                <Form.Label>mail</Form.Label>
+                <Form.Input type="text" name="mail" value={mail} placeholder="mail" onChange={e => onChange(e)}/>
             </Form.FormGroup>
             <Form.FormGroup>
                 <Form.Label>address</Form.Label>
                 <Form.Input type="text" name="address" value={address} placeholder="address" onChange={e => onChange(e)}/>
             </Form.FormGroup>
             <Form.FormGroup>
-                <Form.Label>type</Form.Label>
-                <Form.Input type="text" name="type" value={type} placeholder="type" onChange={e => onChange(e)}/>
+                <Form.Label>age</Form.Label>
+                <Form.Input type="text" name="age" value={age} placeholder="age" onChange={e => onChange(e)}/>
             </Form.FormGroup>
             <Form.FormGroup>
-                <Form.Label>id_agence</Form.Label>
-                <Form.Input type="text" name="id_agence" value={id_agence} placeholder="id_agence" onChange={e => onChange(e)}/>
+                <Form.Label>salary</Form.Label>
+                <Form.Input type="text" name="salary" value={salary} placeholder="salary" onChange={e => onChange(e)}/>
             </Form.FormGroup>
             <Form.FormGroup>
-                <Form.Label>id_status</Form.Label>
-                <Form.Input type="text" name="id_status" value={id_status} placeholder="id_status" onChange={e => onChange(e)}/>
+                <Form.Label>contrat_type</Form.Label>
+                <Form.Input type="text" name="contrat_type" value={contrat_type} placeholder="contrat_type" onChange={e => onChange(e)}/>
             </Form.FormGroup>
             <Form.FormGroup>
-                <Form.Label>value</Form.Label>
-                <Form.Input type="text" name="value" value={value} placeholder="value" onChange={e => onChange(e)}/>
+                <Form.Label>id_agency</Form.Label>
+                <Form.Input type="text" name="id_agency" value={id_agency} placeholder="id_agency" onChange={e => onChange(e)}/>
             </Form.FormGroup>
             <Form.FormGroup>
-                <Form.Label>max_refunds</Form.Label>
-                <Form.Input type="text" name="max_refunds" value={max_refunds} placeholder="max_refunds" onChange={e => onChange(e)}/>
-            </Form.FormGroup>
-            <Form.FormGroup>
-                <Form.SubmitInput type="submit" value="Signup"/>
+                <Form.SubmitInput type="submit" value="Register"/>
             </Form.FormGroup>
         </Form>
     );

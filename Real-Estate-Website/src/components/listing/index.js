@@ -76,10 +76,7 @@ Listing.TopItemContainer = ({ children, ...restProps }) => {
 };
 Listing.Icon = () => {
   return (
-    <i
-      className="fas fa-map-marker-alt"
-      aria-hidden="true"
-      style={{ color: "white" }}></i>
+    <i className="fas fa-map-marker-alt" aria-hidden="true" style={{color: "white"}}/>
   );
 };
 

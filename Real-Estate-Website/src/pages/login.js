@@ -1,21 +1,16 @@
 import React, { Fragment, useState } from "react";
 import { HeaderContainer, FooterContainer } from "../containers";
 import { Login, Form } from "../components";
-import { Link, Redirect } from "react-router-dom";
-
 import { toast } from "react-toastify";
 
 const Loginn = ({ setAuth }) => {
   
-  const [inputs, setInputs] = useState({
+  const [inputs] = useState({
     email: "",
     password: ""
   });
 
   const { email, password } = inputs;
-
-  const onChange = e =>
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
 
   const onSubmitForm = async e => {
     e.preventDefault();
