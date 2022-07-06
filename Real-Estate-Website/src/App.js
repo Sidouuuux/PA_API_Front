@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -57,7 +57,7 @@ const App = () => {
         <Route exact path="/agent/:id" component={Agentt} />
         <Route exact path="/property/:id" component={Listing} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} setAuth={setAuth}/>
+        <Route exact path="/signup" component={Signup} setAuth={setAuth} />
         <Route exact path="/forgot-password" component={Forgot} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/profile" component={UserProfile} />
