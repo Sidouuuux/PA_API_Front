@@ -1,7 +1,6 @@
 import React, { Fragment,useState } from "react";
 import { HeaderContainer, FooterContainer } from "../containers";
 import { Signup, Form } from "../components";
-import { Link, Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Signupp = ({ setAuth }) => {

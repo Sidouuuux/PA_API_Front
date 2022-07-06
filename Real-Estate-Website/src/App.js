@@ -1,10 +1,8 @@
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import React, { Fragment, useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 
-
-import { toast } from "react-toastify";
 import {
   Home,
   Agents,
@@ -18,8 +16,9 @@ import {
   UserProfile,
   Messages,
   Password,
-  AddLisiting,
+  AddListing,
   AdminListingList,
+  AddAgent,
   AdminAgentsList,
   AgentListing,
 } from "./pages";
@@ -64,8 +63,8 @@ const App = () => {
         <Route exact path="/profile" component={UserProfile} />
         <Route exact path="/messages" component={Messages} />
         <Route exact path="/change-password" component={Password} />
-        <Route path="/add-listing/:id?" component={AddLisiting} />
-        <Route path="/add-listing/:id?" component={AddLisiting} />
+        <Route exact path="/add-listing/:id?" component={AddListing} />
+        <Route exact path="/add-agent/:id?" component={AddAgent} />
         <Route exact path="/all-listing" component={AdminListingList} />
         <Route exact path="/all-agents" component={AdminAgentsList} />
         <Route exact path="/mylisting" component={AgentListing} />

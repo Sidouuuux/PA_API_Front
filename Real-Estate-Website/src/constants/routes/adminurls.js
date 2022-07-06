@@ -39,7 +39,7 @@ export const adminurls = [
     icon: "fas fa-users",
     subUrl: true,
     subUrls: [
-      { url: "/all-agents", name: "Add Agents", icon: "fas fa-plus" },
+      { url: "/add-agent", name: "Add Agents", icon: "fas fa-plus" },
       { url: "/all-agents", name: "All Agents", icon: "far fa-list-alt" },
     ],
   },
