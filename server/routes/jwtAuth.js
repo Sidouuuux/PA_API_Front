@@ -9,10 +9,11 @@ const authorization = require("../middleware/authorization");
 //authorizeentication
 
 router.post("/register", async (req, res) => {
-  const { email, name, password } = req.body;
 
+  const { name, surname, email, address, age, salary, contrat_type, id_agency, password } = req.body;
+  console.log(email)
   try {
-    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+    const user = await pool.query("SELECT * FROM users WHERE mail = $1", [
       email,
     ]);
 
@@ -24,12 +25,11 @@ router.post("/register", async (req, res) => {
     const bcryptPassword = await bcrypt.hash(password, salt);
 
     let newUser = await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",
-      [name, email, bcryptPassword]
+      "INSERT INTO users (name, surname, mail, address, age, salary, contrat_type, id_agency) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+      [name, surname, email, address, age, salary, contrat_type, id_agency]
     );
 
-    const jwtToken = jwtGenerator(newUser.rows[0].user_id);
-
+    const jwtToken = jwtGenerator(newUser.rows[0].id);
     return res.json({ jwtToken });
     // res.json(newUser.rows);
   } catch (err) {
@@ -75,6 +75,32 @@ router.get("/is-verify", authorization, (req, res) => {
     res.status(500).send("Server error");
   }
 });
+router.post("/add_asset", async (req, res) => {
+
+  const { name, address, type, id_agence, id_status, value, max_refunds } = req.body;
+  console.log(name)
+  try {
+    const user = await pool.query("SELECT * FROM assets WHERE address = $1", [
+      address,
+    ]);
+
+    if (user.rows.length > 0) {
+      return res.status(401).send("User already exist!");
+    }
+
+    let newAsset = await pool.query(
+      "INSERT INTO assets (id, name, address, type, id_agency, id_status, value, max_refunds ) VALUES (12, $1, $2, $3, $4, $5, $6, $7)",
+      [name, address, type, id_agence, id_status, value, max_refunds ]
+    );
+    console.log(newAsset)
+    return ("added");
+    // res.json(newUser.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 /*
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNTU0MjJkOTQtNWZjYS00MDhhLWJhNTYtYjE3MDE5M2E2MzU3In0sImlhdCI6MTY1Njc2MDEwNiwiZXhwIjoxNjU2NzYzNzA2fQ.QDRMbuidWp1Qc7Ds-UeSunxA9k2_Z0NZA2KMq5ZhKYk
 */

@@ -11,10 +11,13 @@ const Signupp = ({ setAuth }) => {
     name: "",
     surname: "",
     address: "",
-    age: ""
+    age: "",
+    salary:"",
+    contrat_type:"",
+    id_agency:""
   });
 
-  const { email, password, name, surname, address, age } = inputs;
+  const { name, surname, email, address, age, salary, contrat_type, id_agency, password } = inputs;
 
   const onChange = e =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -22,7 +25,7 @@ const Signupp = ({ setAuth }) => {
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
-      const body = { email, password, name, surname, address, age };
+      const body = { name, surname, email, address, age, salary, contrat_type, id_agency, password };
       console.log(body)
       const response = await fetch(
         "http://localhost:5000/authentication/register",
@@ -35,7 +38,7 @@ const Signupp = ({ setAuth }) => {
         }
       );
       const parseRes = await response.json();
-
+      console.log(parseRes.jwtToken)
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
@@ -98,6 +101,29 @@ const Signupp = ({ setAuth }) => {
                   name="age"
                   value={age}
                   placeholder="age"
+                  onChange={e => onChange(e)} />
+                </Form.FormGroup><Form.FormGroup>
+                <Form.Label>salary</Form.Label>
+                <Form.Input type="text"
+                name="salary"
+                value={salary}
+                placeholder="salary"
+                onChange={e => onChange(e)} />
+              </Form.FormGroup>
+              <Form.FormGroup>
+                  <Form.Label>contrat_type</Form.Label>
+                  <Form.Input type="text"
+                  name="contrat_type"
+                  value={contrat_type}
+                  placeholder="contrat_type"
+                  onChange={e => onChange(e)} />
+                </Form.FormGroup>
+                <Form.FormGroup>
+                  <Form.Label>id_agency</Form.Label>
+                  <Form.Input type="text"
+                  name="id_agency"
+                  value={id_agency}
+                  placeholder="id_agency"
                   onChange={e => onChange(e)} />
                 </Form.FormGroup>
                 <Form.FormGroup>
